@@ -1,0 +1,2 @@
+class PassportDetail < ApplicationRecord
+end

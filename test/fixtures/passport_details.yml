@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  passport_number: MyString
+  place_of_issue: MyString
+  data_of_issue: MyString
+  country_of_issue: MyString
+  country: MyString
+
+two:
+  passport_number: MyString
+  place_of_issue: MyString
+  data_of_issue: MyString
+  country_of_issue: MyString
+  country: MyString

@@ -1,0 +1,2 @@
+class ParentDetail < ApplicationRecord
+end

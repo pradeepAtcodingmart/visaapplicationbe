@@ -1,0 +1,2 @@
+module ProfileDetailHelper
+end

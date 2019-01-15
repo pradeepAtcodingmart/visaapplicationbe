@@ -1,0 +1,2 @@
+class VisaDetail < ApplicationRecord
+end

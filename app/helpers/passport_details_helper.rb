@@ -1,0 +1,2 @@
+module PassportDetailsHelper
+end

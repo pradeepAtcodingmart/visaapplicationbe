@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  applicant_id: MyString
+  street: MyString
+  village: MyString
+  state: MyString
+  country: MyString
+  pincode: MyString
+  mobileno: MyString
+
+two:
+  applicant_id: MyString
+  street: MyString
+  village: MyString
+  state: MyString
+  country: MyString
+  pincode: MyString
+  mobileno: MyString

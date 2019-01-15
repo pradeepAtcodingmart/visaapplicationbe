@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  applicant_id: MyString
+  visa_details: MyString
+  place_to_be_visited: MyString
+  visa_duration_in_month: MyString
+  no_of_entries: MyString
+  date_of_journey: MyString
+  port_of_arrival_india: MyString
+  port_of_exited_india: MyString
+  last_visited_country: MyString
+
+two:
+  applicant_id: MyString
+  visa_details: MyString
+  place_to_be_visited: MyString
+  visa_duration_in_month: MyString
+  no_of_entries: MyString
+  date_of_journey: MyString
+  port_of_arrival_india: MyString
+  port_of_exited_india: MyString
+  last_visited_country: MyString
