@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_01_142623) do
+ActiveRecord::Schema.define(version: 2019_01_17_134122) do
 
   create_table "address_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "applicant_id"
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2019_01_01_142623) do
     t.string "applicant_id"
     t.string "passport_number"
     t.string "place_of_issue"
-    t.string "data_of_issue"
+    t.string "date_of_issue"
     t.string "country_of_issue"
     t.string "country"
     t.datetime "created_at", null: false

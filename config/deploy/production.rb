@@ -59,3 +59,12 @@
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
+set :repo_url, 'git@github.com:pradeepAtcodingmart/visaapplicationbe.git'   # your repo url
+set :branch, 'master'
+set :stage, :production
+# Setting RAILS_ENV environment variable on server
+set :rails_env, :production
+
+set :normalize_asset_timestamps, %{public/images public/javascripts public/stylesheets}
+
+role :app, %w{root@139.59.63.110}
