@@ -4,36 +4,41 @@ lock "~> 3.11.0"
 set :application, "visaapplicationbe"
 set :repo_url, "git@github.com:pradeepAtcodingmart/visaapplicationbe.git"
 
-# Default branch is :master
-# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+set :use_sudo, true
+# set :scm, :git
+set :keep_releases, 5
+set :format, :pretty
+set :log_level, :debug
+set :pty, true
+set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
+set :stages, %w(production staging production)
+set :default_stage, "production"
 
-# Default deploy_to directory is /var/www/my_app_name
-# set :deploy_to, "/var/www/my_app_name"
+# Force rake through bundle exec
+SSHKit.config.command_map[:rake] = "bundle exec rake"
 
-# Default value for :format is :airbrussh.
-# set :format, :airbrussh
+# Force rails through bundle exec
+SSHKit.config.command_map[:rails] = "bundle exec rails"
 
-# You can configure the Airbrussh format using :format_options.
-# These are the defaults.
-# set :format_options, command_output: true, log_file: "log/capistrano.log", color: :auto, truncate: :auto
+set :migration_role, 'app' # Defaults to 'db'
+set :assets_roles, [:app] # Defaults to [:web]
 
-# Default value for :pty is false
-# set :pty, true
+# Shared directories over different deployments
+# set :linked_files, %w(config/database.yml)
 
-# Default value for :linked_files is []
-# append :linked_files, "config/database.yml"
+namespace :deploy do
+  desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      within release_path do
+        execute "sudo rm -rf tmp"
+        execute "sudo mkdir tmp"
+        execute "sudo chmod -R 777 #{current_path}/tmp"
+        execute "sudo chmod -R 777 #{shared_path}/tmp"
+        execute "sudo service apache2 restart"
+      end
+    end
+  end
 
-# Default value for linked_dirs is []
-# append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
-
-# Default value for default_env is {}
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
-
-# Default value for local_user is ENV['USER']
-# set :local_user, -> { `git config user.name`.chomp }
-
-# Default value for keep_releases is 5
-# set :keep_releases, 5
-
-# Uncomment the following to require manually verifying the host key before first deploy.
-# set :ssh_options, verify_host_key: :secure
+  after :finishing, 'deploy:restart'
+end
